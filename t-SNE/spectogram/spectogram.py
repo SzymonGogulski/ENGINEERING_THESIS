@@ -33,7 +33,7 @@ def plot_wav_and_windows(wav_path, sr, n_fft, hop_length, win_length):
     y_len = len(y)
 
     plt.subplot(1+num_frames, 1, 1)
-    plt.plot(y, label="Amplitude")
+    plt.plot(time, y, label="Amplitude")
     plt.grid()
 
     plt.title("Waveform")
