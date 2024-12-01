@@ -53,6 +53,11 @@ target_include_directories(transmitter_cpp PRIVATE
 target_link_libraries(transmitter_cpp 
     pico_stdlib
     pico_cyw43_arch_none
+    hardware_adc 
+    hardware_dma 
+    hardware_irq 
+    hardware_timer
+    hardware_pwm
 )
 
 pico_add_extra_outputs(transmitter_cpp)

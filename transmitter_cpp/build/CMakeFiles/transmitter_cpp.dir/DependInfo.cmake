@@ -163,6 +163,8 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_exception/include"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_cyw43_driver/include"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/include"
+  "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/include"
+  "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_pwm/include"
   )
 
 # The set of dependency files which are needed:
@@ -200,6 +202,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/pheap.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/pheap.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/pheap.c.o.d"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/queue.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/queue.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/queue.c.o.d"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.o.d"
+  "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o.d"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.c.o.d"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_clocks/clocks.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_clocks/clocks.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_clocks/clocks.c.o.d"
   "/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_dma/dma.c" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_dma/dma.c.o" "gcc" "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_dma/dma.c.o.d"

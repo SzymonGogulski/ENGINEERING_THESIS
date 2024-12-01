@@ -973,6 +973,30 @@ home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/transmitter_cpp.dir/build.make CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.s
 .PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.s
 
+home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.o: home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o
+.PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.o
+
+# target to build an object file
+home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/transmitter_cpp.dir/build.make CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o
+.PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o
+
+home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.i: home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i
+.PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.i
+
+# target to preprocess a source file
+home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/transmitter_cpp.dir/build.make CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i
+.PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i
+
+home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.s: home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s
+.PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.s
+
+# target to generate assembly for a file
+home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/transmitter_cpp.dir/build.make CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s
+.PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s
+
 home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.o: home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 .PHONY : home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.o
 
@@ -2493,6 +2517,9 @@ help:
 	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.o"
 	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.i"
 	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.s"
+	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.o"
+	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.i"
+	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.s"
 	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.o"
 	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.i"
 	@echo "... home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.s"

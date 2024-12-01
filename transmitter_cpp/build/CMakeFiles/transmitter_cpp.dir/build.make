@@ -1444,6 +1444,20 @@ CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_base.c.s"
 	/home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_base.c -o CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_base.c.s
 
+CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o: CMakeFiles/transmitter_cpp.dir/flags.make
+CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o: /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c
+CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o: CMakeFiles/transmitter_cpp.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/szymon-gogulski/Desktop/transmitter_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o"
+	/home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o -MF CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o.d -o CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o -c /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c
+
+CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i"
+	/home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c > CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.i
+
+CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s"
+	/home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c -o CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.s
+
 # Object files for target transmitter_cpp
 transmitter_cpp_OBJECTS = \
 "CMakeFiles/transmitter_cpp.dir/transmitter_cpp.cpp.o" \
@@ -1544,7 +1558,8 @@ transmitter_cpp_OBJECTS = \
 "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_exception/exception.c.o" \
 "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o" \
 "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o" \
-"CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_base.c.o"
+"CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_base.c.o" \
+"CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o"
 
 # External object files for target transmitter_cpp
 transmitter_cpp_EXTERNAL_OBJECTS =
@@ -1648,11 +1663,12 @@ transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-s
 transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o
 transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o
 transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/async_context_base.c.o
+transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o
 transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/build.make
 transmitter_cpp.elf: pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/bs2_default_padded_checksummed.S.o
 transmitter_cpp.elf: /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_crt0/rp2040/memmap_default.ld
 transmitter_cpp.elf: CMakeFiles/transmitter_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/szymon-gogulski/Desktop/transmitter_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Linking CXX executable transmitter_cpp.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/szymon-gogulski/Desktop/transmitter_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Linking CXX executable transmitter_cpp.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/transmitter_cpp.dir/link.txt --verbose=$(VERBOSE)
 	/home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-objdump -h /home/szymon-gogulski/Desktop/transmitter_cpp/build/transmitter_cpp.elf > transmitter_cpp.dis
 	/home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-objdump -d /home/szymon-gogulski/Desktop/transmitter_cpp/build/transmitter_cpp.elf >> transmitter_cpp.dis

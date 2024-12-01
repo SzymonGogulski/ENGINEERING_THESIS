@@ -65,6 +65,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_util/queue.c.o.d"
   "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.o"
   "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/platform.c.o.d"
+  "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o"
+  "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/adc.c.o.d"
   "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.c.o"
   "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_boot_lock/boot_lock.c.o.d"
   "CMakeFiles/transmitter_cpp.dir/home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_clocks/clocks.c.o"
