@@ -1,5 +1,5 @@
 CMakeFiles/transmitter_cpp.dir/transmitter_cpp.cpp.o: \
- /home/szymon-gogulski/Desktop/transmitter_cpp/transmitter_cpp.cpp \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/transmitter_cpp.cpp \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/stdio.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/_ansi.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/newlib.h \
@@ -32,9 +32,9 @@ CMakeFiles/transmitter_cpp.dir/transmitter_cpp.cpp.o: \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/stdint.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_intsup.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_stdint.h \
- /home/szymon-gogulski/Desktop/transmitter_cpp/build/generated/pico_base/pico/version.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/build/generated/pico_base/pico/version.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_base_headers/include/pico/config.h \
- /home/szymon-gogulski/Desktop/transmitter_cpp/build/generated/pico_base/pico/config_autogen.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/build/generated/pico_base/pico/config_autogen.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/boards/include/boards/pico_w.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/pico_platform/include/pico/platform.h \
@@ -75,15 +75,6 @@ CMakeFiles/transmitter_cpp.dir/transmitter_cpp.cpp.o: \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_regs/include/hardware/regs/resets.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_cyw43_arch/include/pico/cyw43_arch.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/lib/cyw43-driver/src/cyw43.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/lib/cyw43-driver/src/cyw43_config.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_cyw43_driver/include/cyw43_configport.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/lib/cyw43-driver/src/cyw43_ll.h \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/string.h \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_locale.h \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/strings.h \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/string.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/lib/cyw43-driver/src/cyw43_country.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_async_context/include/pico/async_context.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/pico_cyw43_arch/include/pico/cyw43_arch/arch_threadsafe_background.h
+ /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/include/hardware/adc.h \
+ /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_structs/include/hardware/structs/adc.h \
+ /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_regs/include/hardware/regs/adc.h

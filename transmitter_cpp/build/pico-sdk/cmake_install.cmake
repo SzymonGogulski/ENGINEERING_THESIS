@@ -39,16 +39,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/szymon-gogulski/Desktop/transmitter_cpp/build/pico-sdk/tools/cmake_install.cmake")
+  include("/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/build/pico-sdk/tools/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/szymon-gogulski/Desktop/transmitter_cpp/build/pico-sdk/src/cmake_install.cmake")
+  include("/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/build/pico-sdk/src/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/szymon-gogulski/Desktop/transmitter_cpp/build/pico-sdk/docs/cmake_install.cmake")
+  include("/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/build/pico-sdk/docs/cmake_install.cmake")
 endif()
 

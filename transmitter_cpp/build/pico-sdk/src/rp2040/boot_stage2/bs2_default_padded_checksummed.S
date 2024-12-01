@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /home/szymon-gogulski/Desktop/transmitter_cpp/build/pico-sdk/src/rp2040/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/transmitter_cpp/build/pico-sdk/src/rp2040/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb
