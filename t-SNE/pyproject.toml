@@ -6,13 +6,16 @@ authors = ["Your Name <you@example.com>"]
 readme = "tsne-readme.md"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.10"
-matplotlib = "^3.9.2"
+python = ">=3.9,<3.11"
+pyqt5 = "^5.15.11"
+pyside2 = "^5.15.2.1"
+matplotlib = "^3.9.3"
 librosa = "^0.10.2.post1"
 pydub = "^0.25.1"
 wave = "^0.0.2"
 ffmpeg = "^1.4"
 simpleaudio = "^1.0.4"
+
 
 
 [build-system]

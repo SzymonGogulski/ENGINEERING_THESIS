@@ -1,130 +1,47 @@
+/**
+ * Copyright (c) 2021 Raspberry Pi (Trading) Ltd.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include <stdio.h>
-#include <cstring>
 #include "pico/stdlib.h"
-#include "hardware/dma.h"
-#include "hardware/irq.h"
-#include "hardware/sync.h"
+#include "hardware/gpio.h"
 #include "hardware/adc.h"
-#include "hardware/timer.h"
+#include "hardware/uart.h"
+#include "pico/binary_info.h"
 
-// Program definitions
-#define GREEN_LED 0
-#define BUTTON_1 14
-#define BUTTON_2 15
-#define ADC_PIN 26
+/* Example code to extract analog values from a microphone using the ADC
+   with accompanying Python file to plot these values
 
-// Constants
-const float FREQUENCY = 16000.0;
-const uint16_t NUM_SAMPLES = 16000;
-const float SAMPLE_PERIOD = 1.0 / FREQUENCY;
-const uint16_t SAMPLE_PERIOD_US = SAMPLE_PERIOD * 1000 * 1000;
+   Connections on Raspberry Pi Pico board, other boards may vary.
 
-// Variables
-int16_t buffer[NUM_SAMPLES];
+   GPIO 26/ADC0 (pin 31)-> AOUT or AUD on microphone board
+   3.3v (pin 36) -> VCC on microphone board
+   GND (pin 38)  -> GND on microphone board
+*/
 
-void initialize(){
-    
-    // STDIO
-    stdio_init_all();
-
-    // GPIO
-    gpio_init(GREEN_LED);
-    gpio_init(BUTTON_1);
-    gpio_init(BUTTON_2);
-    gpio_set_dir(GREEN_LED, GPIO_OUT);
-    gpio_put(GREEN_LED, false);
-    gpio_set_dir(BUTTON_1, GPIO_IN);
-    gpio_set_dir(BUTTON_2, GPIO_IN);
-    gpio_pull_up(BUTTON_1);
-    gpio_pull_up(BUTTON_2);
-
-    // ADC
-    adc_init();
-    adc_gpio_init(ADC_PIN);
-    adc_select_input(0);
-}
-
-void record(){
-    // Ensure the buffer is cleared (optional)
-    memset(buffer, 0, sizeof(buffer));
-    
-    // The ADC clock divider for 16kHz sample rate
-    float adc_clkdiv = 3000;
-    adc_set_clkdiv(adc_clkdiv);
-    
-    // Configure the ADC FIFO
-    adc_fifo_setup(
-        true,    // Write each completed conversion to the FIFO
-        true,    // Enable DMA data request (DREQ)
-        1,       // DREQ (DMA request) when at least 1 sample is present
-        false,   // Disable error bit in FIFO
-        false    // Don't shift bits; keep 12-bit data right-aligned
-    );
-    
-    // Select ADC input (ADC0)
-    adc_select_input(0);
-    
-    // Clear the ADC FIFO
-    adc_fifo_drain();
-    
-    // Claim a free DMA channel
-    int dma_chan = dma_claim_unused_channel(true);
-    
-    // Configure the DMA channel
-    dma_channel_config c = dma_channel_get_default_config(dma_chan);
-    channel_config_set_transfer_data_size(&c, DMA_SIZE_16); // 16-bit transfers
-    channel_config_set_read_increment(&c, false);           // Read from fixed address (ADC FIFO)
-    channel_config_set_write_increment(&c, true);           // Write to incrementing buffer address
-    channel_config_set_dreq(&c, DREQ_ADC);                  // Set DREQ to ADC
-    
-    // Configure the DMA channel with the ADC FIFO as source and buffer as destination
-    dma_channel_configure(
-        dma_chan,
-        &c,
-        buffer,               // Destination pointer (buffer)
-        &adc_hw->fifo,        // Source pointer (ADC FIFO)
-        NUM_SAMPLES,          // Number of transfers
-        false                 // Don't start yet
-    );
-    
-    // Start the ADC
-    adc_run(true);
-    
-    // Start the DMA transfer
-    dma_channel_start(dma_chan);
-    
-    // Wait for the DMA transfer to complete
-    dma_channel_wait_for_finish_blocking(dma_chan);
-    
-    // Stop the ADC
-    adc_run(false);
-    
-    // Drain the ADC FIFO (optional)
-    adc_fifo_drain();
-    
-    // Release the DMA channel
-    dma_channel_unclaim(dma_chan);
-}
-
-
-void analize(){
-    printf("damn");
-}
-
-void transmit(){
-    printf("damn");
-}
+#define ADC_NUM 0
+#define ADC_PIN (26 + ADC_NUM)
+#define ADC_VREF 3.3
+#define ADC_RANGE (1 << 12)
+#define ADC_CONVERT (ADC_VREF / (ADC_RANGE - 1))
 
 int main() {
+    stdio_init_all();
+    printf("Beep boop, listening...\n");
 
-    // Inicjalizacja peryferiow
-    initialize();
+    bi_decl(bi_program_description("Analog microphone example for Raspberry Pi Pico")); // for picotool
+    bi_decl(bi_1pin_with_name(ADC_PIN, "ADC input pin"));
 
-    
-    while (true) {
+    adc_init();
+    adc_gpio_init( ADC_PIN);
+    adc_select_input( ADC_NUM);
 
-        
+    uint adc_raw; // nie potrzeba float
+    while (1) {
+        adc_raw = adc_read(); // raw voltage from ADC
+        printf("%.2f\n", adc_raw * ADC_CONVERT);
+        sleep_ms(2);
     }
-
-    return 0;
 }

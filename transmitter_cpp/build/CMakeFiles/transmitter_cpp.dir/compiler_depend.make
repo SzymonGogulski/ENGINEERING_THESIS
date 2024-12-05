@@ -4606,6 +4606,10 @@ CMakeFiles/transmitter_cpp.dir/transmitter_cpp.cpp.o: /home/szymon-gogulski/Desk
   /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_base_headers/include/pico/config.h \
   /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_base_headers/include/pico/error.h \
   /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_base_headers/include/pico/types.h \
+  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info.h \
+  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info/code.h \
+  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info/defs.h \
+  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info/structure.h \
   /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_stdlib_headers/include/pico/stdlib.h \
   /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_time/include/pico/time.h \
   /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_regs/include/hardware/platform_defs.h \

@@ -2,10 +2,12 @@ from pathlib import Path
 from pydub import AudioSegment
 from pydub.playback import play
 import numpy as np
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
-import os
 import random
-os.system('cls')
+import os
+
 
 
 def print_audio_params(audio: AudioSegment):
