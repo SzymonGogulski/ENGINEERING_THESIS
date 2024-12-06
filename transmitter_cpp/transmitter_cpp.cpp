@@ -1,85 +1,17 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/adc.h"
-#include "hardware/uart.h"
-#include "hardware/regs/adc.h"
-#include "hardware/clocks.h"
-#include "pico/time.h"
+#include "hardware/dma.h"
+#include "hardware/irq.h"
+#include "tusb.h"
 
+// GPIO PINS
 #define G_LED_PIN 0
 #define Y_LED_PIN 1
 #define BUTTON_PIN 14
-#define ADC_INPUT 26
-#define ADC_NUM 0
 
-#define SAMPLE_RATE 16000
-#define ACQUISITION_TIME_SEC 5
-#define TOTAL_SAMPLES (SAMPLE_RATE * ACQUISITION_TIME_SEC)
-
-#define ADC_NUM 0
-#define ADC_PIN 26
-#define SIGNAL_MEAN 2050.0f
-#define SIGNAL_RANGE 350.0f
-#define SIGNAL_MAX (int)(SIGNAL_MEAN + SIGNAL_RANGE)
-#define SIGNAL_MIN (int)(SIGNAL_MEAN - SIGNAL_RANGE)
-
-#define BUFFER_SIZE 10
-float buffer[BUFFER_SIZE];
-
-void send_buffer_via_usb(float* ptr, int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%.2f\n", buffer[i]);
-    }
-}
-
-static inline float convert(uint16_t raw);
-
-void initialize();
-
-int main() {
-
-    initialize();
-
-    while(true){
-        while (gpio_get(BUTTON_PIN)) {
-            // waiting for button press to start
-            printf("press button to start recording. \n");
-            sleep_ms(100);
-        }
-
-        for (int i=0; i<=2; i++){
-            // 3 yellow blinks
-            sleep_ms(400);
-            gpio_put(Y_LED_PIN, 1);
-            sleep_ms(100);
-            gpio_put(Y_LED_PIN, 0);
-        }
-
-        uint16_t adc_raw;
-        float adc_converted;
-        uint64_t start_time = time_us_64();
-        adc_raw = adc_read(); // raw voltage from ADC
-        adc_converted = convert(adc_raw);
-        uint64_t end_time = time_us_64();
-
-        uint64_t elapsed_time = end_time - start_time;
-        printf("Execution time: %llu microseconds\n", elapsed_time);
-    }
-    
-    return 0;
-}
-
-static inline float convert(uint16_t raw){
-    if (raw >= SIGNAL_MAX){
-        return 1.0f;
-    } else if (raw <= SIGNAL_MIN){
-        return -1.0f;
-    } else {
-        return (raw - SIGNAL_MEAN) / SIGNAL_RANGE;
-    }
-}
-
-void initialize(){
+// SETUP STDIO, GPIO
+void setup(){
 
     stdio_init_all();
 
@@ -96,12 +28,132 @@ void initialize(){
     gpio_init(BUTTON_PIN);
     gpio_set_dir(BUTTON_PIN, GPIO_IN);
     gpio_pull_up(BUTTON_PIN);
-
-    // Initialize ADC
-    adc_init();
-    adc_gpio_init(ADC_INPUT);
-    adc_select_input(ADC_INPUT - 26);
-
     sleep_ms(1000);
 }
+
+// NORMALIZATION
+#define SIGNAL_MEAN 2050.0f
+#define SIGNAL_RANGE 350.0f
+#define SIGNAL_MAX (int)(SIGNAL_MEAN + SIGNAL_RANGE)
+#define SIGNAL_MIN (int)(SIGNAL_MEAN - SIGNAL_RANGE)
+#define SIGNAL_RANGE_INV (1.0f / SIGNAL_RANGE)
+
+static inline float normalize(uint16_t raw) {
+    float normalized = (raw - SIGNAL_MEAN) * SIGNAL_RANGE_INV;
+    normalized = (normalized > 1.0f) ? 1.0f : normalized;
+    normalized = (normalized < -1.0f) ? -1.0f : normalized;
+    return normalized;
+}
+
+// ADC SETUP
+#define ADC_PIN 26
+#define ADC_NUM 0
+#define ADC_FREQUENCY 16000
+
+// CIRCULAR BUFFER
+#define BUFFER_SIZE 1024
+uint16_t buffer[BUFFER_SIZE];
+volatile uint16_t write_index = 0;
+volatile uint16_t read_index = 0;
+int dma_channel;
+
+// TINY USB BULK TRANSMIT
+void usb_task() {
+
+    if (tud_cdc_connected()) {
+        while (read_index != write_index) {
+
+            float normalized_value = normalize(buffer[read_index]);
+            tud_cdc_write(&normalized_value, sizeof(normalized_value));
+            read_index = (read_index + 1) % BUFFER_SIZE;
+        }
+        tud_cdc_write_flush();
+    }
+}
+
+// DMA INTERRUP HANDLER, ADVANCE THE WRITE INDEX
+void dma_irq_handler() {
+    dma_hw->ints0 = (1u << dma_channel);
+    write_index = (write_index + 1) % BUFFER_SIZE;
+
+    // OVERFLOW CHECK
+    if (write_index == read_index) {
+        gpio_put(Y_LED_PIN, 1);}
+}
+
+// DMA AND ADC SETUP
+void setup_adc_dma() {
+    // INITIALIZE ADC
+    adc_init();
+    adc_gpio_init(ADC_PIN);
+    adc_select_input(ADC_NUM);
+    float clkdiv = 48e6 / ADC_FREQUENCY;
+    adc_set_clkdiv(clkdiv);
+    adc_fifo_setup(
+        true, 
+        true, 
+        1, 
+        false, 
+        true);
+
+    // INITIALIZE DMA
+    dma_channel = dma_claim_unused_channel(true);
+    dma_channel_config dma_config = dma_channel_get_default_config(dma_channel);
+    channel_config_set_transfer_data_size(&dma_config, DMA_SIZE_16);
+    channel_config_set_read_increment(&dma_config, false);
+    channel_config_set_write_increment(&dma_config, true);
+    channel_config_set_dreq(&dma_config, DREQ_ADC);
+    dma_channel_configure(
+        dma_channel,
+        &dma_config,
+        buffer, 
+        &adc_hw->fifo, 
+        BUFFER_SIZE, 
+        true);
+
+    // DMA INTERRUPT TO ADVANCE WRITE INDEX
+    dma_channel_set_irq0_enabled(dma_channel, true);
+    irq_set_exclusive_handler(DMA_IRQ_0, dma_irq_handler);
+    irq_set_enabled(DMA_IRQ_0, true);
+
+    // START ADC
+    adc_run(true);
+}
+
+// MAIN LOOP, TRANSMIT BULK USB
+int main() {
+
+    setup();
+    gpio_put(G_LED_PIN, 1);
+    sleep_ms(2000);
+    
+    tusb_init();
+
+    if (tud_cdc_connected()){
+        gpio_put(G_LED_PIN, 0);
+    }
+
+    // WAIT FOR THE BUTTON TO BE PRESSED
+    while (gpio_get(BUTTON_PIN)) {
+        sleep_ms(50);
+    }
+
+    // BLINK YELLOW DIODE 3 TIMES
+    for (int i=0; i<=2; i++){
+        sleep_ms(400);
+        gpio_put(Y_LED_PIN, 1);
+        sleep_ms(100);
+        gpio_put(Y_LED_PIN, 0);
+    }
+
+    // START READING AND TRANSMITING DATA
+    setup_adc_dma();
+
+    // BULK USB TRANSMIT
+    while (true) {
+        usb_task();
+    }
+}
+
+
 

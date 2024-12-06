@@ -1,113 +1,111 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/adc.h"
-#include "hardware/uart.h"
-#include "hardware/regs/adc.h"
-#include "hardware/clocks.h"
-#include "pico/time.h"
+#include "hardware/dma.h"
+#include "hardware/irq.h"
+#include "tusb.h"
 
-#define LED_PIN 0
-#define BUTTON_PIN 14
-#define ADC_INPUT 26
-#define ADC_NUM 0
+// Pin and ADC Configuration
+#define ADC_PIN 26
+#define ADC_FREQUENCY 16000      // Sampling frequency
+#define ACQUISITION_TIME_SEC 5   // Acquisition time
+#define TOTAL_SAMPLES (ADC_FREQUENCY * ACQUISITION_TIME_SEC)
+#define BUFFER_SIZE 1024         // Circular buffer size
+#define SIGNAL_MEAN 2050.0f      // Signal mean for normalization
+#define SIGNAL_RANGE 350.0f      // Signal range for normalization
+#define SIGNAL_RANGE_INV (1.0f / SIGNAL_RANGE)
 
-#define SAMPLE_RATE 16000
-#define ACQUISITION_TIME_SEC 5
-#define TOTAL_SAMPLES (SAMPLE_RATE * ACQUISITION_TIME_SEC)
+// Circular buffer for ADC samples
+uint16_t buffer[BUFFER_SIZE];
+volatile uint16_t write_index = 0;
+volatile uint16_t read_index = 0;
+int dma_channel;
 
-// Conversion parameters
-#define SIGNAL_MEAN 2050.0f
-#define SIGNAL_RANGE 350.0f
-#define SIGNAL_MAX (int)(SIGNAL_MEAN + SIGNAL_RANGE)
-#define SIGNAL_MIN (int)(SIGNAL_MEAN - SIGNAL_RANGE)
-
-static inline float convert(uint16_t raw);
-void initialize();
-
-int main(){
-
-    
-    while (gpio_get(BUTTON_PIN) == 1) {
-        tight_loop_contents();
-    }
-
-    // Button pressed: turn LED on
-    gpio_put(G_LED_PIN, 1);
-
-    uint32_t sample_interval_us = 62; 
-
-    // To reduce UART overhead, buffer samples before sending
-    const int BATCH_SIZE = 512;
-    float sample_buffer[BATCH_SIZE];
-    int buffer_index = 0;
-
-    // Acquire samples
-    for (int i = 0; i < TOTAL_SAMPLES; i++) {
-        // Read from ADC
-        uint16_t raw = adc_read(); 
-        float val = convert(raw);
-
-        sample_buffer[buffer_index++] = val;
-        if (buffer_index >= BATCH_SIZE) {
-            // Send batch over UART (stdout)
-            for (int j = 0; j < BATCH_SIZE; j++) {
-                // Print as float. You might choose a more compact format if needed.
-                // For example: printf("%f\n", sample_buffer[j]);
-                // Or send binary. Here we use text for simplicity.
-                printf("%f\n", sample_buffer[j]);
-            }
-            buffer_index = 0;
-        }
-    }
-        // Send remaining samples if any
-    for (int j = 0; j < buffer_index; j++) {
-        printf("%f\n", sample_buffer[j]);
-
-        sleep_us(sample_interval_us);
-    }
-
-
-    // After all samples transmitted, turn LED off
-    gpio_put(G_LED_PIN, 0);
-
-    // End
-    while (1) {
-        tight_loop_contents();
-    }
-
-    return 0;
+// Normalize function: Convert uint16_t to float32
+static inline float normalize(uint16_t raw) {
+    float normalized = (raw - SIGNAL_MEAN) * SIGNAL_RANGE_INV;
+    normalized = (normalized > 1.0f) ? 1.0f : normalized;
+    normalized = (normalized < -1.0f) ? -1.0f : normalized;
+    return normalized;
 }
 
+// USB Task: Transmit normalized samples via USB
+void usb_task() {
+    if (tud_cdc_connected()) {
+        while (read_index != write_index) {
+            // Normalize the sample
+            float normalized_value = normalize(buffer[read_index]);
+            
+            // Transmit normalized sample
+            tud_cdc_write(&normalized_value, sizeof(normalized_value));
 
-void initialize(){
+            // Advance the read index
+            read_index = (read_index + 1) % BUFFER_SIZE;
+        }
+        tud_cdc_write_flush(); // Ensure USB data is sent
+    }
+}
 
-    stdio_init_all();
-    printf("watchout 1\n");
-    sleep_ms(10000);
-    printf("watchout 2\n");
+// DMA IRQ Handler: Advance write_index when DMA writes a new sample
+void dma_irq_handler() {
+    // Clear the DMA interrupt
+    dma_hw->ints0 = (1u << dma_channel);
 
-    // Initialize LED
-    gpio_init(G_LED_PIN);
-    gpio_set_dir(G_LED_PIN, GPIO_OUT);
-    gpio_put(G_LED_PIN, 0);
+    // Advance the write index
+    write_index = (write_index + 1) % BUFFER_SIZE;
+}
 
-    // Initialize Button
-    gpio_init(BUTTON_PIN);
-    gpio_set_dir(BUTTON_PIN, GPIO_IN);
-    gpio_pull_up(BUTTON_PIN);
-
+// Setup ADC and DMA
+void setup_adc_dma() {
     // Initialize ADC
     adc_init();
-    adc_gpio_init(ADC_INPUT);
-    adc_select_input(ADC_INPUT - 26);
+    adc_gpio_init(ADC_PIN);  // Initialize GPIO for ADC
+    adc_select_input(0);     // Select ADC input 0 (ADC0)
+
+    // Set ADC clock divider for 16 kHz sampling rate
+    float clkdiv = 48e6 / ADC_FREQUENCY; // ADC clock: 48 MHz
+    adc_set_clkdiv(clkdiv);
+
+    // Configure ADC FIFO
+    adc_fifo_setup(
+        true,  // Enable FIFO
+        true,  // Enable DMA request
+        1,     // FIFO threshold (1 sample triggers DMA)
+        false, // No error flag
+        true   // Shift samples to 12 bits
+    );
+
+    // Initialize DMA
+    dma_channel = dma_claim_unused_channel(true); // Get a free DMA channel
+    dma_channel_config dma_config = dma_channel_get_default_config(dma_channel);
+
+    // Configure DMA channel
+    channel_config_set_transfer_data_size(&dma_config, DMA_SIZE_16);  // 16-bit transfers
+    channel_config_set_read_increment(&dma_config, false);  // No increment for ADC FIFO
+    channel_config_set_write_increment(&dma_config, true);  // Increment for buffer
+    channel_config_set_dreq(&dma_config, DREQ_ADC);  // Trigger on ADC FIFO ready
+
+    // Configure DMA to write to circular buffer
+    dma_channel_configure(
+        dma_channel,
+        &dma_config,
+        buffer,                // Destination (circular buffer)
+        &adc_hw->fifo,         // Source (ADC FIFO)
+        BUFFER_SIZE,           // Transfer count
+        true                   // Start the transfer immediately
+    );
+
+    // Enable DMA interrupt
+    dma_channel_set_irq0_enabled(dma_channel, true);
+    irq_set_exclusive_handler(DMA_IRQ_0, dma_irq_handler);
+    irq_set_enabled(DMA_IRQ_0, true);
+
+    // Start ADC
+    adc_run(true);
 }
 
-static inline float convert(uint16_t raw) {
-    if (raw >= SIGNAL_MAX) {
-        return 1.0f;
-    } else if (raw <= SIGNAL_MIN) {
-        return -1.0f;
-    } else {
-        return (raw - SIGNAL_MEAN) / SIGNAL_RANGE;
-    }
+int main() {
+    // Initialize stdio and USB
+    stdio_init_all();
+    
 }
