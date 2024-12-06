@@ -1,9 +1,3 @@
-/**
- * Copyright (c) 2021 Raspberry Pi (Trading) Ltd.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
@@ -11,37 +5,34 @@
 #include "hardware/uart.h"
 #include "pico/binary_info.h"
 
-/* Example code to extract analog values from a microphone using the ADC
-   with accompanying Python file to plot these values
-
-   Connections on Raspberry Pi Pico board, other boards may vary.
-
-   GPIO 26/ADC0 (pin 31)-> AOUT or AUD on microphone board
-   3.3v (pin 36) -> VCC on microphone board
-   GND (pin 38)  -> GND on microphone board
-*/
-
 #define ADC_NUM 0
-#define ADC_PIN (26 + ADC_NUM)
-#define ADC_VREF 3.3
-#define ADC_RANGE (1 << 12)
-#define ADC_CONVERT (ADC_VREF / (ADC_RANGE - 1))
+#define ADC_PIN 26
+#define SIGNAL_MEAN 2050.0f
+#define SIGNAL_RANGE 350.0f
+#define SIGNAL_MAX (int)(SIGNAL_MEAN + SIGNAL_RANGE)
+#define SIGNAL_MIN (int)(SIGNAL_MEAN - SIGNAL_RANGE)
+
+float convert(uint16_t raw){
+    if (raw >= SIGNAL_MAX){
+        return 1.0f;
+    } else if (raw <= SIGNAL_MIN){
+        return -1.0f;
+    } else {
+        return (raw - SIGNAL_MEAN) / SIGNAL_RANGE;
+    }
+}
 
 int main() {
     stdio_init_all();
-    printf("Beep boop, listening...\n");
-
-    bi_decl(bi_program_description("Analog microphone example for Raspberry Pi Pico")); // for picotool
-    bi_decl(bi_1pin_with_name(ADC_PIN, "ADC input pin"));
 
     adc_init();
-    adc_gpio_init( ADC_PIN);
-    adc_select_input( ADC_NUM);
+    adc_gpio_init(ADC_PIN);
+    adc_select_input(ADC_NUM);
 
-    uint adc_raw; // nie potrzeba float
+    uint16_t adc_raw;
     while (1) {
         adc_raw = adc_read(); // raw voltage from ADC
-        printf("%.2f\n", adc_raw * ADC_CONVERT);
-        sleep_ms(2);
+        printf("%.2f\n", convert(adc_raw));
+        sleep_ms(10);
     }
 }

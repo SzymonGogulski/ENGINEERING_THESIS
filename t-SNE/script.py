@@ -12,16 +12,15 @@ print('some')
 #     'key_words', 'noise_samples', 'key_words_with_noise', 'wav', 'wav')
 
 # Turn .wav to spectogram
-path = Path.cwd() / "key_words_with_noise" / "eight" / "0.wav"
+path = Path.cwd() / "key_words" / "eight" / "0a2b400e_nohash_0.wav"
 y, sr = librosa.load(path, sr=16000)
 
-print("dfddffd")
-print(y)
-print(type(y[1]))
-print(max(y))
-print(min(y))
+from pydub import AudioSegment
+from pydub.playback import play
+sample = AudioSegment.from_wav(path)
+play(sample)
 
-spectrogram, sr = wav_to_spectrogram(str(path), 16000)
+#spectrogram, sr = wav_to_spectrogram(str(path), 16000)
 
 
 wav = plot_wav(path, sr=16000)

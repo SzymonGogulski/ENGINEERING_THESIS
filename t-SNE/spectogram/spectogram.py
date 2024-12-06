@@ -58,8 +58,7 @@ def wav_to_spectrogram(wav_path, sr):
     # Function to convert .wav file to a spectrogram
     # sr - sample rate
     y, sr = librosa.load(wav_path, sr=sr)
-    print("y", y)
-    print("y.shape", y.shape)
+
     stft = librosa.stft(y)
     spectrogram = np.abs(stft)
     spectrogram_db = librosa.amplitude_to_db(spectrogram, ref=np.max)
