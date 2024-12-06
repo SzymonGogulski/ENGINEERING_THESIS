@@ -78,7 +78,6 @@ CMakeFiles/transmitter_cpp.dir/transmitter_cpp.cpp.o: \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_adc/include/hardware/adc.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_structs/include/hardware/structs/adc.h \
  /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_regs/include/hardware/regs/adc.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info/defs.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info/structure.h \
- /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/common/pico_binary_info/include/pico/binary_info/code.h
+ /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
+ /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
+ /home/szymon-gogulski/.pico-sdk/sdk/2.1.0/src/rp2040/hardware_regs/include/hardware/regs/clocks.h

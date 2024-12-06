@@ -13,7 +13,7 @@ static void gpio_callback(uint gpio, uint32_t events) {
     if (gpio == BUTTON_PIN) {
         // Toggle LED state
         led_state = !led_state;
-        gpio_put(LED_PIN, led_state);
+        gpio_put(G_LED_PIN, led_state);
     }
 }
 
@@ -21,9 +21,9 @@ int main() {
     stdio_init_all();
 
     // Initialize the LED GPIO
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
-    gpio_put(LED_PIN, led_state);
+    gpio_init(G_LED_PIN);
+    gpio_set_dir(G_LED_PIN, GPIO_OUT);
+    gpio_put(G_LED_PIN, led_state);
 
     // Initialize the button GPIO
     gpio_init(BUTTON_PIN);
