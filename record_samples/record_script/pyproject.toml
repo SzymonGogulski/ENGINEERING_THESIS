@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["Szymon Gogulski <szymongogulskiedu@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+pyserial = "^3.5"
+pyqt5 = "^5.15.11"
+pyside2 = "^5.15.2.1"
+matplotlib = "^3.9.3"
+librosa = "^0.10.2.post1"
+pydub = "^0.25.1"
+wave = "^0.0.2"
+ffmpeg = "^1.4"
+simpleaudio = "^1.0.4"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
