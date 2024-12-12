@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\szymo\Desktop\ASR\blinkcpp\build\CMakeFiles\107d427ae3d55d618e3b6f5754f70b43\bs2_default.bin.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\szymo\Desktop\ASR\blinkcpp\build\CMakeFiles\107d427ae3d55d618e3b6f5754f70b43\bs2_default_padded_checksummed.S.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\szymo\.pico-sdk\sdk\2.1.0\src\rp2040\boot_stage2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\szymo\Desktop\ASR\blinkcpp\build\pico-sdk\src\rp2040\boot_stage2\bs2_default_padded_checksummed.S" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D120F2A3-7A62-3C3D-9A73-4ECF41FAB67F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

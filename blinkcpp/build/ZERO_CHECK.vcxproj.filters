@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\szymo\Desktop\ASR\blinkcpp\build\CMakeFiles\f7c4282cae2d04b65bc984113cca3490\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D120F2A3-7A62-3C3D-9A73-4ECF41FAB67F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
