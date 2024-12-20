@@ -3,7 +3,7 @@ from pydub import AudioSegment
 from pydub.playback import play
 import numpy as np
 import matplotlib
-matplotlib.use('Qt5Agg')
+# matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 import random
 import os
@@ -69,6 +69,10 @@ def split_noise_to_samples(input_dir: str, output_dir: str, input_format: str, e
         if len(audio)/float(1000) > 1:
             for i in range(1000, len(audio), 1000):
                 fragment = audio[i-1000:i]
+                samples = fragment.get_array_of_samples()
+                samples = np.array(samples)
+                if samples.shape != (16000,):
+                    print("WTFx")
                 fragment.export(
                     f"{str(output_path)}\{str(counter)}.{export_format}", format=export_format)
                 counter = counter + 1
@@ -114,6 +118,23 @@ def check_samples(first: AudioSegment, second: AudioSegment, channels: int, fram
         return False
 
 
+def adjust_frame_count(segment: AudioSegment, target_frame_count: int = 16000) -> AudioSegment:
+    current_frame_count = segment.frame_count()
+    
+    # Calculate the duration of one frame in milliseconds
+    frame_duration_ms = 1000 / segment.frame_rate
+    
+    
+    if current_frame_count < target_frame_count:
+        padding_duration_ms = (target_frame_count - current_frame_count) * frame_duration_ms
+        silence = AudioSegment.silent(duration=padding_duration_ms, frame_rate=segment.frame_rate)
+        segment = segment + silence
+    elif current_frame_count > target_frame_count:
+        max_duration_ms = target_frame_count * frame_duration_ms
+        segment = segment[:max_duration_ms]
+    
+    return segment
+
 def mix_key_word_and_noise_samples(key_words_dir: str, noise_dir: str, output_dir: str, input_format: str, export_format: str):
     key_words_path = Path.cwd() / key_words_dir
     noise_path = Path.cwd() / noise_dir
@@ -158,12 +179,24 @@ def mix_key_word_and_noise_samples(key_words_dir: str, noise_dir: str, output_di
             noise_sample = AudioSegment.from_file(
                 get_random_noise_sample(noise_path), input_format)
 
+            if key_word_audio.frame_rate != 16000:
+                key_word_audio.set_frame_rate(16000)
+
+            if noise_sample.frame_rate != 16000:
+                noise_sample.set_frame_rate(16000)
+
+            if key_word_audio.frame_count() != 16000:
+                key_word_audio = adjust_frame_count(key_word_audio)
+
+            if noise_sample.frame_count() != 16000:
+                noise_sample = adjust_frame_count(noise_sample)
+            
             # Normalize the audio loudness.
             key_word_audio_normalized = normalize_loudness(
                 key_word_audio, -20)
             noise_sample_normalized = normalize_loudness(
                 noise_sample, -20)
-
+        
             overlayed_audio_normalized = key_word_audio_normalized.overlay(
                 noise_sample_normalized)
 
