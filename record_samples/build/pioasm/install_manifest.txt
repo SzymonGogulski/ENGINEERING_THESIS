@@ -1,0 +1,5 @@
+/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/record_samples/build/pioasm-install/pioasm/pioasm
+/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/record_samples/build/pioasm-install/pioasm/pioasmTargets.cmake
+/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/record_samples/build/pioasm-install/pioasm/pioasmTargets-release.cmake
+/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/record_samples/build/pioasm-install/pioasm/pioasmConfig.cmake
+/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/record_samples/build/pioasm-install/pioasm/pioasmConfigVersion.cmake
