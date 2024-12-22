@@ -80,19 +80,12 @@ def RC5_transmit(toggle: int, addr: int, command: int):
 
 
 ir.off()
+
 while True:
     if not button1.value():
         # print("Button 1 pressed. ")
         # print("sending value 1. ")
         # RC5_transmit(0, 0, 1)
-        ir.on()
-        print(">led:1.0\r\n")
-        sleep_ms(500)
-
-    if not button2.value():
-        # print("button 2 pressed")
-        # print("sending value 2. ")
-        # RC5_transmit(0, 0, 2)
-        ir.off()
-        print(">led:0.0\r\n")
-        sleep_ms(500)
+        ir.toggle()
+        print(">toggle led\r\n")
+        sleep_ms(200)

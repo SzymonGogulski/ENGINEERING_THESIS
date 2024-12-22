@@ -1,0 +1,5 @@
+/home/szymon-gogulski/Desktop/pico-tflmicro/build/_deps/picotool/picotool
+/home/szymon-gogulski/Desktop/pico-tflmicro/build/_deps/picotool/picotoolTargets.cmake
+/home/szymon-gogulski/Desktop/pico-tflmicro/build/_deps/picotool/picotoolTargets-release.cmake
+/home/szymon-gogulski/Desktop/pico-tflmicro/build/_deps/picotool/picotoolConfig.cmake
+/home/szymon-gogulski/Desktop/pico-tflmicro/build/_deps/picotool/picotoolConfigVersion.cmake

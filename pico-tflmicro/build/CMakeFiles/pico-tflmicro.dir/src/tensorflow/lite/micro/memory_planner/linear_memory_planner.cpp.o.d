@@ -1,0 +1,25 @@
+CMakeFiles/pico-tflmicro.dir/src/tensorflow/lite/micro/memory_planner/linear_memory_planner.cpp.o: \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/micro/memory_planner/linear_memory_planner.cpp \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/micro/memory_planner/linear_memory_planner.h \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/micro/compatibility.h \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/micro/memory_planner/micro_memory_planner.h \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/c/common.h \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/core/c/common.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdarg.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdbool.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/core/c/c_api_types.h \
+ /usr/include/newlib/c++/13.2.1/utility \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++config.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/os_defines.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/cpu_defines.h \
+ /usr/include/newlib/c++/13.2.1/bits/stl_relops.h \
+ /usr/include/newlib/c++/13.2.1/bits/stl_pair.h \
+ /usr/include/newlib/c++/13.2.1/type_traits \
+ /usr/include/newlib/c++/13.2.1/bits/move.h \
+ /usr/include/newlib/c++/13.2.1/bits/utility.h \
+ /usr/include/newlib/c++/13.2.1/initializer_list \
+ /home/szymon-gogulski/Desktop/pico-tflmicro/src/tensorflow/lite/micro/micro_log.h \
+ /usr/include/newlib/c++/13.2.1/cstdarg \
+ /usr/include/newlib/c++/13.2.1/cstddef
