@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/szymon-gogulski/Desktop/pico-tflmicro
+CMAKE_SOURCE_DIR = /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/szymon-gogulski/Desktop/pico-tflmicro/build
+CMAKE_BINARY_DIR = /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/szymon-gogulski/Desktop/pico-tflmicro/build/CMakeFiles /home/szymon-gogulski/Desktop/pico-tflmicro/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build/CMakeFiles /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/szymon-gogulski/Desktop/pico-tflmicro/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -2225,6 +2225,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+model.o: model.cpp.o
+.PHONY : model.o
+
+# target to build an object file
+model.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/model.cpp.o
+.PHONY : model.cpp.o
+
+model.i: model.cpp.i
+.PHONY : model.i
+
+# target to preprocess a source file
+model.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/model.cpp.i
+.PHONY : model.cpp.i
+
+model.s: model.cpp.s
+.PHONY : model.s
+
+# target to generate assembly for a file
+model.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/model.cpp.s
+.PHONY : model.cpp.s
 
 src/signal/micro/kernels/delay.o: src/signal/micro/kernels/delay.cpp.o
 .PHONY : src/signal/micro/kernels/delay.o
@@ -9242,6 +9266,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... model.o"
+	@echo "... model.i"
+	@echo "... model.s"
 	@echo "... src/signal/micro/kernels/delay.o"
 	@echo "... src/signal/micro/kernels/delay.i"
 	@echo "... src/signal/micro/kernels/delay.s"

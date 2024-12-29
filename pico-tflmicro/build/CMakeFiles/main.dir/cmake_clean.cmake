@@ -158,6 +158,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/home/szymon-gogulski/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o.d"
   "CMakeFiles/main.dir/main.cpp.o"
   "CMakeFiles/main.dir/main.cpp.o.d"
+  "CMakeFiles/main.dir/model.cpp.o"
+  "CMakeFiles/main.dir/model.cpp.o.d"
   "main.elf"
   "main.pdb"
 )
