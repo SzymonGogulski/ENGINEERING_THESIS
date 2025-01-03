@@ -3994,7 +3994,9 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   /home/szymon-gogulski/pico/pico-sdk/src/common/pico_stdlib_headers/include/pico/stdlib.h \
   /home/szymon-gogulski/pico/pico-sdk/src/common/pico_time/include/pico/time.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
@@ -4004,6 +4006,9 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma_debug.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/io_bank0.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/m0plus.h \
@@ -4017,7 +4022,9 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/pico_platform/include/pico/platform/cpu_regs.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
