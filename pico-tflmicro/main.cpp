@@ -10,6 +10,9 @@
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/schema/schema_generated.h"
 
+#include "librosa.h"
+
+
 // GPIO PINS
 #define G_LED_PIN 0
 #define Y_LED_PIN 1
@@ -66,25 +69,53 @@ void record(uint16_t* ptr, int buffer_size){
     }
 }
 
-#define MFCC_FRAMES 61
-#define MFCC_COEFITIENTS 13
-#define MFCC_CHANNELS 1
-float mfcc[MFCC_FRAMES][MFCC_COEFITIENTS][MFCC_CHANNELS];
-
-void to_mfcc(float* buffer, float* mfcc){
-
-}
-
-const tflite::Model* tflite_model = nullptr;
-tflite::MicroInterpreter* interpreter = nullptr;
-TfLiteTensor* input = nullptr;
-TfLiteTensor* output = nullptr;
-int inference_count = 0;
-
 int main(){
 
     setup();
     setup_adc();
+
+    const int numSamples = 256;
+    const int sr = 16000;
+    const float frequency = 10.0f;
+
+    std::vector<float> x(numSamples);
+
+    // Fill the vector with sine wave samples
+    for (int i = 0; i < numSamples; ++i) {
+        float t = static_cast<float>(i) / sr;
+        x[i] = std::sin(2.0f * M_PI * frequency * t);
+    }
+
+    int n_fft = 256;
+    int n_hop = 256;
+    std::string window = "hann";
+    bool center = false;
+    std::string pad_mode = "symmetric";
+    float power = 1.0;
+    int n_mel = 40;
+    int fmin = 80;
+    int fmax = 7600;
+    int n_mfcc = 13;
+    bool norm = true;
+    int type = 2;
+
+    sleep_ms(10000);
+    printf("LETSGOO\n");
+
+    //compute mfcc
+    std::vector<std::vector<float>> mfcc = librosa::Feature::mfcc(x, sr, n_fft, n_hop, window, center, pad_mode, power, n_mel, fmin, fmax, n_mfcc, norm, type);
+
+    printf("MFCC Values:\n");
+    for (size_t i = 0; i < mfcc.size(); ++i) {
+        printf("Frame %d: ", i+1);
+        for (size_t j = 0; j < mfcc[i].size(); ++j) {
+            printf("%.4f, ", mfcc[i][j]);
+        }
+        std::cout << std::endl;
+        printf("\n");
+    }
+
+    printf("DONE\n");
 
     while(true){
     
@@ -96,7 +127,7 @@ int main(){
         
         // RECORD SAMPLES
         gpio_put(Y_LED_PIN, 1);
-        record(buffer, BUFFER_SIZE);
+        sleep_ms(1000);
         gpio_put(Y_LED_PIN, 0);
   
     }

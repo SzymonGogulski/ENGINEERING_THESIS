@@ -645,6 +645,9 @@ hardware_adc
 hardware_dma 
 hardware_irq)
 
+set(LIBROSA_CPP_DIR ${CMAKE_CURRENT_LIST_DIR}/src/librosa)
+include_directories(main ${LIBROSA_CPP_DIR})
+
 # Include necessary headers for the executable
 target_include_directories(main PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}/src/

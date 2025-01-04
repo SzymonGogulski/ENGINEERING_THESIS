@@ -95,6 +95,8 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
 
 # The include file search paths:
 set(CMAKE_ASM_TARGET_INCLUDE_PATH
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/main"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/librosa"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/ruy"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/gemmlowp"
