@@ -207,6 +207,19 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
 
+#=============================================================================
+# Target rules for targets named CMSISDSP
+
+# Build rule for target.
+CMSISDSP: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMSISDSP
+.PHONY : CMSISDSP
+
+# fast build rule for target.
+CMSISDSP/fast:
+	$(MAKE) $(MAKESILENT) -f bin_dsp/CMakeFiles/CMSISDSP.dir/build.make bin_dsp/CMakeFiles/CMSISDSP.dir/build
+.PHONY : CMSISDSP/fast
+
 home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o: home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o
 .PHONY : home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o
 
@@ -9029,6 +9042,7 @@ help:
 	@echo "... bs2_default_bin"
 	@echo "... cyw43_driver_picow_cyw43_bus_pio_spi_pio_h"
 	@echo "... pioasmBuild"
+	@echo "... CMSISDSP"
 	@echo "... bs2_default"
 	@echo "... bs2_default_library"
 	@echo "... main"

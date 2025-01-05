@@ -40,6 +40,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build/pico-sdk/cmake_install.cmake")
+  include("/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build/bin_dsp/cmake_install.cmake")
 
 endif()
 

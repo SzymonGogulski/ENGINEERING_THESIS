@@ -1443,6 +1443,7 @@ main.elf: CMakeFiles/main.dir/home/szymon-gogulski/pico/pico-sdk/src/rp2_common/
 main.elf: CMakeFiles/main.dir/build.make
 main.elf: pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/bs2_default_padded_checksummed.S.o
 main.elf: libpico-tflmicro-lib.a
+main.elf: bin_dsp/libCMSISDSP.a
 main.elf: /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/pico_crt0/rp2040/memmap_default.ld
 main.elf: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Linking CXX executable main.elf"

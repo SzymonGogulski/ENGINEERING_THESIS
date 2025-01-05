@@ -4,7 +4,7 @@
 # compile C with /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/bin/arm-none-eabi-gcc
 C_DEFINES = -DARM_MATH_LOOPUNROLL
 
-C_INCLUDES = -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/CMSIS-DSP/Source/../Include -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/CMSIS-DSP/Source/DistanceFunctions -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/CMSIS-DSP/Source/../PrivateInclude
+C_INCLUDES = -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/DistanceFunctions -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS_5/CMSIS/Core/Include -I/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../PrivateInclude
 
 C_FLAGS = -mcpu=cortex-m0plus -mthumb -g -O3 -DNDEBUG -std=gnu11
 

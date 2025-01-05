@@ -95,8 +95,6 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
 
 # The include file search paths:
 set(CMAKE_ASM_TARGET_INCLUDE_PATH
-  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/main"
-  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/librosa"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/ruy"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/gemmlowp"
@@ -107,6 +105,8 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/cmsis_nn/Include"
   "/home/szymon-gogulski/pico/pico-sdk/src/rp2_common/pico_atomic/include"
   "/home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS_5/CMSIS/Core/Include"
   "/home/szymon-gogulski/pico/pico-sdk/src/common/pico_stdlib_headers/include"
   "/home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_gpio/include"
   "/home/szymon-gogulski/pico/pico-sdk/src/common/pico_base_headers/include"

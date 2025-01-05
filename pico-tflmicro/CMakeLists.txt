@@ -9,6 +9,11 @@ set(CMAKE_CXX_STANDARD 11)
 
 pico_sdk_init()
 
+# Add cmsis core
+set(CMSISCORE ${CMAKE_CURRENT_LIST_DIR}/src/CMSIS_5/CMSIS/Core)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/src/CMSIS-DSP/Source bin_dsp)
+
+# Add Tflmicro
 add_library(pico-tflmicro-lib STATIC)
 
 target_include_directories(pico-tflmicro-lib
@@ -640,13 +645,12 @@ target_sources(main
 # Link the library to the executable
 target_link_libraries(main 
 pico-tflmicro-lib
+CMSISDSP
 pico_stdlib
 hardware_adc 
 hardware_dma 
 hardware_irq)
 
-set(LIBROSA_CPP_DIR ${CMAKE_CURRENT_LIST_DIR}/src/librosa)
-include_directories(main ${LIBROSA_CPP_DIR})
 
 # Include necessary headers for the executable
 target_include_directories(main PRIVATE

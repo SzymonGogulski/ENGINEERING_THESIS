@@ -18,6 +18,24 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
   "pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/tmp/pioasmBuild-mkdirs.cmake"
   "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/pico_sdk_import.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/BasicMathFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/BayesFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/CMakeLists.txt"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/CommonTables/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/ComplexMathFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/ControllerFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/DistanceFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/FastMathFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/FilteringFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/InterpolationFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/MatrixFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/QuaternionMathFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/SVMFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/StatisticsFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/SupportFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/TransformFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/WindowFunctions/Config.cmake"
+  "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/configDsp.cmake"
   "/home/szymon-gogulski/pico/pico-sdk/CMakeLists.txt"
   "/home/szymon-gogulski/pico/pico-sdk/cmake/Platform/PICO.cmake"
   "/home/szymon-gogulski/pico/pico-sdk/cmake/generic_board.cmake"
@@ -284,6 +302,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "pico-sdk/src/rp2_common/pico_stdio/CMakeFiles/CMakeDirectoryInformation.cmake"
   "pico-sdk/src/rp2_common/pico_stdlib/CMakeFiles/CMakeDirectoryInformation.cmake"
   "pico-sdk/docs/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "bin_dsp/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -295,4 +314,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/pioasmBuild.dir/DependInfo.cmake"
   "pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/DependInfo.cmake"
+  "bin_dsp/CMakeFiles/CMSISDSP.dir/DependInfo.cmake"
   )
