@@ -18,8 +18,11 @@
 #define Y_LED_PIN 1
 #define R_LED_PIN 2
 #define BUTTON_PIN 14
+// ADC SETUP
+#define ADC_PIN 26
+#define ADC_NUM 0
 
-// SETUP STDIO, GPIO
+// SETUP STDIO, GPIO, ADC
 void setup(){
 
     stdio_init_all();
@@ -41,17 +44,18 @@ void setup(){
     gpio_init(BUTTON_PIN);
     gpio_set_dir(BUTTON_PIN, GPIO_IN);
     gpio_pull_up(BUTTON_PIN);
-    sleep_ms(1000);
-}
 
-// ADC SETUP
-#define ADC_PIN 26
-#define ADC_NUM 0
-
-void setup_adc(){
     adc_init();
     adc_gpio_init(ADC_PIN);
     adc_select_input(ADC_NUM);
+
+    sleep_ms(1000);
+}
+
+
+
+void setup_adc(){
+
 }
 
 // BUFFER SETUP AND OPERATIONS
