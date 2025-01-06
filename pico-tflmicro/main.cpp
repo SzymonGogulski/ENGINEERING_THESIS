@@ -87,7 +87,6 @@ static float32_t pTmp [fftLen + 2];
 static float32_t pDst[nbDctOutputs];
 static float32_t mfccOutput[window_num*nbDctOutputs];
 
-
 namespace {
 using ModelOpResolver = tflite::MicroMutableOpResolver<10>; // Adjust the number based on the operations your model uses
 
@@ -100,6 +99,8 @@ TfLiteStatus RegisterOps(ModelOpResolver& op_resolver) {
     TF_LITE_ENSURE_STATUS(op_resolver.AddStridedSlice());
     TF_LITE_ENSURE_STATUS(op_resolver.AddPack());
     TF_LITE_ENSURE_STATUS(op_resolver.AddSoftmax());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddQuantize());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddDequantize());
     return kTfLiteOk;
 }
 } // namespace
