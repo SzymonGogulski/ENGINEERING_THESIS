@@ -160,6 +160,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o.d"
   "CMakeFiles/main.dir/model.cpp.o"
   "CMakeFiles/main.dir/model.cpp.o.d"
+  "CMakeFiles/main.dir/pre_def_mfcc.cpp.o"
+  "CMakeFiles/main.dir/pre_def_mfcc.cpp.o.d"
   "main.elf"
   "main.pdb"
 )

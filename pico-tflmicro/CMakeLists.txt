@@ -640,7 +640,9 @@ add_executable(main "main.cpp")
 
 target_sources(main
   PRIVATE
-  ${CMAKE_CURRENT_LIST_DIR}/model.cpp)
+  ${CMAKE_CURRENT_LIST_DIR}/model.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/pre_def_mfcc.cpp)
+  
 
 # Link the library to the executable
 target_link_libraries(main 

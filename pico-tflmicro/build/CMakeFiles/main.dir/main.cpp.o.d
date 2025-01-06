@@ -130,6 +130,10 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma_debug.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/common.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/c_api_types.h \
+ /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/utility \
+ /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/stl_relops.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/micro_interpreter.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/cstddef \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/flatbuffers.h \
@@ -177,8 +181,6 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/string.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/strings.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/string.h \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/utility \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/stl_relops.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/string \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/char_traits.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/localefwd.h \
@@ -232,9 +234,7 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/table.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/vector_downward.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/c/c_api_types.h \
- /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/c_api_types.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/c/common.h \
- /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/common.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/api/error_reporter.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/cstdarg \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/kernels/internal/tensor_ctypes.h \
@@ -336,4 +336,5 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/dsp/window_functions.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/arm_const_structs.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/arm_common_tables.h \
- /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/dsp/transform_functions.h
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/dsp/transform_functions.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/pre_def_mfcc.cpp

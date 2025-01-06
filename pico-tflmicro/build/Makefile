@@ -2263,6 +2263,30 @@ model.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/model.cpp.s
 .PHONY : model.cpp.s
 
+pre_def_mfcc.o: pre_def_mfcc.cpp.o
+.PHONY : pre_def_mfcc.o
+
+# target to build an object file
+pre_def_mfcc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/pre_def_mfcc.cpp.o
+.PHONY : pre_def_mfcc.cpp.o
+
+pre_def_mfcc.i: pre_def_mfcc.cpp.i
+.PHONY : pre_def_mfcc.i
+
+# target to preprocess a source file
+pre_def_mfcc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/pre_def_mfcc.cpp.i
+.PHONY : pre_def_mfcc.cpp.i
+
+pre_def_mfcc.s: pre_def_mfcc.cpp.s
+.PHONY : pre_def_mfcc.s
+
+# target to generate assembly for a file
+pre_def_mfcc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/pre_def_mfcc.cpp.s
+.PHONY : pre_def_mfcc.cpp.s
+
 src/signal/micro/kernels/delay.o: src/signal/micro/kernels/delay.cpp.o
 .PHONY : src/signal/micro/kernels/delay.o
 
@@ -9283,6 +9307,9 @@ help:
 	@echo "... model.o"
 	@echo "... model.i"
 	@echo "... model.s"
+	@echo "... pre_def_mfcc.o"
+	@echo "... pre_def_mfcc.i"
+	@echo "... pre_def_mfcc.s"
 	@echo "... src/signal/micro/kernels/delay.o"
 	@echo "... src/signal/micro/kernels/delay.i"
 	@echo "... src/signal/micro/kernels/delay.s"

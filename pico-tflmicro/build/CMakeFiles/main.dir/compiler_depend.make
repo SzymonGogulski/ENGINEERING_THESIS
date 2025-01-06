@@ -3913,6 +3913,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   generated/pico_base/pico/config_autogen.h \
   generated/pico_base/pico/version.h \
   /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/pre_def_mfcc.cpp \
   /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_common_tables.h \
   /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_const_structs.h \
   /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_math.h \
@@ -4081,6 +4082,70 @@ CMakeFiles/main.dir/model.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESI
   /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
   /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.h
 
+CMakeFiles/main.dir/pre_def_mfcc.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/pre_def_mfcc.cpp \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/_ansi.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/_newlib_version.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/alloca.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++config.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/arm-none-eabi/thumb/v6-m/nofp/bits/cpu_defines.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/arm-none-eabi/thumb/v6-m/nofp/bits/os_defines.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/cpp_type_traits.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/requires_hosted.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/std_abs.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/cmath \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/ext/type_traits.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/math.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/limits.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/machine/_default_types.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/machine/_types.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/machine/ieeefp.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/machine/stdlib.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/math.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/newlib.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/stdint.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/stdlib.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/string.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/strings.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_intsup.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_locale.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_stdint.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_types.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/cdefs.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/config.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/features.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/lock.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/reent.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/string.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/syslimits.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/float.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/limits.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/stddef.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/stdint.h \
+  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/syslimits.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_math.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_math_memory.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_math_types.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/basic_math_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/bayes_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/complex_math_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/controller_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/distance_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/fast_math_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/filtering_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/interpolation_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/matrix_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/none.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/quaternion_math_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/statistics_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/support_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/svm_defines.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/svm_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/transform_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/utils.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/window_functions.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/cmsis/CMSIS/Core/Include/cmsis_compiler.h \
+  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/cmsis/CMSIS/Core/Include/cmsis_gcc.h
+
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.cpp:
 
@@ -4179,6 +4244,8 @@ CMakeFiles/main.dir/model.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESI
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/dsp/bayes_functions.h:
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Include/arm_const_structs.h:
+
+/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/pre_def_mfcc.cpp:
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.h:
 
