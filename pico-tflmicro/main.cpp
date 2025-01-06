@@ -87,19 +87,22 @@ static float32_t pTmp [fftLen + 2];
 static float32_t pDst[nbDctOutputs];
 static float32_t mfccOutput[window_num*nbDctOutputs];
 
-// pico-tflmicro variables
-namespace {
-const tflite::Model* model = nullptr;
-tflite::MicroInterpreter* interpreter = nullptr;
-TfLiteTensor* input = nullptr;
-TfLiteTensor* output = nullptr;
-int inference_count = 0;
 
-constexpr int kTensorArenaSize = 2000;
-uint8_t tensor_arena[kTensorArenaSize];
-}  // namespace
-const float kXrange = 2.f * 3.14159265359f;
-const int kInferencesPerCycle = 20;
+namespace {
+using ModelOpResolver = tflite::MicroMutableOpResolver<10>; // Adjust the number based on the operations your model uses
+
+TfLiteStatus RegisterOps(ModelOpResolver& op_resolver) {
+    TF_LITE_ENSURE_STATUS(op_resolver.AddConv2D());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddMaxPool2D());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddFullyConnected());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddReshape());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddShape());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddStridedSlice());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddPack());
+    TF_LITE_ENSURE_STATUS(op_resolver.AddSoftmax());
+    return kTfLiteOk;
+}
+} // namespace
 
 int main(){
 
@@ -132,46 +135,31 @@ int main(){
     printf("mfcc setup complete. \n");
 
     // SETUP TENSORFLOW LITE MODEL ------------------------------------------------------------------------------------------------------------------
-    tflite::InitializeTarget();
+    const tflite::Model* model = ::tflite::GetModel(my_model);
+    TFLITE_CHECK_EQ(model->version(), TFLITE_SCHEMA_VERSION);
+    printf("checkpoint 1\n");
+    // Register operations
+    ModelOpResolver op_resolver;
+    TF_LITE_ENSURE_STATUS(RegisterOps(op_resolver));
+    printf("checkpoint 2\n");
+    // Define tensor arena size and allocate memory
+    constexpr int kTensorArenaSize = 64 * 1024; // Adjust size based on model requirements
+    uint8_t tensor_arena[kTensorArenaSize];
 
-    // Map the model into a usable data structure. This doesn't involve any
-    // copying or parsing, it's a very lightweight operation.
-    model = tflite::GetModel(g_hello_world_float_model_data);
-    if (model->version() != TFLITE_SCHEMA_VERSION) {
-        printf(
-            "Model provided is schema version %d not equal "
-            "to supported version %d.",
-            model->version(), TFLITE_SCHEMA_VERSION);
-        return 0;
-    }
+    printf("checkpoint 3\n");
+    tflite::MicroInterpreter interpreter(model, op_resolver, tensor_arena, kTensorArenaSize);
+    TF_LITE_ENSURE_STATUS(interpreter.AllocateTensors());
+    printf("ceckpoint 4\n");
+    // Input and output tensors
+    TfLiteTensor* input_tensor = interpreter.input(0);
+    TfLiteTensor* output_tensor = interpreter.output(0);
+    printf("checkpoint 5\n");
+    // Check input and output tensor sizes
+    TFLITE_CHECK_EQ(input_tensor->dims->size, 2); // Ensure 2D input
+    TFLITE_CHECK_EQ(input_tensor->dims->data[1], 793); // Ensure input size matches
+    TFLITE_CHECK_EQ(output_tensor->dims->size, 2); // Ensure 2D output
+    TFLITE_CHECK_EQ(output_tensor->dims->data[1], 11); // Ensure output size matches
 
-    // This pulls in all the operation implementations we need.
-    // NOLINTNEXTLINE(runtime-global-variables)
-    static tflite::MicroMutableOpResolver<1> resolver;
-    TfLiteStatus resolve_status = resolver.AddFullyConnected();
-    if (resolve_status != kTfLiteOk) {
-        printf("Op resolution failed");
-        return 0;
-    }
-
-    // Build an interpreter to run the model with.
-    static tflite::MicroInterpreter static_interpreter(
-        model, resolver, tensor_arena, kTensorArenaSize);
-    interpreter = &static_interpreter;
-
-    // Allocate memory from the tensor_arena for the model's tensors.
-    TfLiteStatus allocate_status = interpreter->AllocateTensors();
-    if (allocate_status != kTfLiteOk) {
-        printf("AllocateTensors() failed");
-        return 0;
-    }
-
-    // Obtain pointers to the model's input and output tensors.
-    input = interpreter->input(0);
-    output = interpreter->output(0);
-
-    // Keep track of how many inferences we have performed.
-    inference_count = 0;
 
     printf("Tensorflow setup complete \n");
 
@@ -188,61 +176,36 @@ int main(){
         // TODO
 
         //CALCULATE MFCCS
-        // for (int i=0; i<window_num; i++){
+        for (int i=0; i<window_num; i++){
 
-        //     // Extract signal frame
-        //     for (int j=0; j<fftLen; j++) {
-        //         pSrc[j] = audio[i*fftStep + j];
-        //     }
+            // Extract signal frame
+            for (int j=0; j<fftLen; j++) {
+                pSrc[j] = audio[i*fftStep + j];
+            }
 
-        //     // Calculate mfcc coefitients of the signal frame
-        //     arm_mfcc_f32(&mfccInstance, pSrc, pDst, pTmp);
+            // Calculate mfcc coefitients of the signal frame
+            arm_mfcc_f32(&mfccInstance, pSrc, pDst, pTmp);
 
-        //     // Move frame MFCCs to mfccOutput;
-        //     for (int j=0; j<nbDctOutputs; j++){
-        //         mfccOutput[i*nbDctOutputs + j] = pDst[j];
-        //     }
-        // }
+            // Move frame MFCCs to mfccOutput;
+            for (int j=0; j<nbDctOutputs; j++){
+                mfccOutput[i*nbDctOutputs + j] = pDst[j];
+            }
+        }
         
         // RUN INFERENCE ON THE MODEL -------------------------------------------------
-        float position = static_cast<float>(inference_count) /
-                        static_cast<float>(kInferencesPerCycle);
-        float x = position * kXrange;
-
-        // Quantize the input from floating-point to integer
-        float scale = 0.02464;
-        int zero_point = -128;
-
-        int8_t x_quantized = static_cast<int8_t>(round(x / scale) + zero_point);
-        // Place the quantized input in the model's input tensor
-        input->data.int8[0] = x_quantized;
-
-        // Run inference, and report any error
-        TfLiteStatus invoke_status = interpreter->Invoke();
-        if (invoke_status != kTfLiteOk) {
-            printf("Invoke failed on x: %f\n", x);
-            return 0;
+        // Copy input values into the model's input tensor
+        for (int i = 0; i < 793; ++i) {
+            input_tensor->data.f[i] = mfccOutput[i];
         }
 
-        // Obtain the quantized output from model's output tensor
-        int8_t y_quantized = output->data.int8[0];
-        // Dequantize the output from integer to floating-point
-        const float output_scale = 2.0f / 255.0f;
-        float y = y_quantized * output_scale;
+            // Run inference
+        TF_LITE_ENSURE_STATUS(interpreter.Invoke());
 
-        // Output the results. A custom HandleOutput function can be implemented
-        // for each supported hardware target.
-        printf("(%.4f, %d, %.4f)\n", x, x_quantized, y);
-
-        int g_led_brightness = (int)(127.5f * (y + 1));
-
-        // Log the current brightness value for display in the console.
-        printf("%d\n", g_led_brightness);
-
-        // Increment the inference_counter, and reset it if we have reached
-        // the total number per cycle
-        inference_count += 1;
-        if (inference_count >= kInferencesPerCycle) inference_count = 0;
+        // Retrieve and print the output values
+        printf("Model output:\n");
+        for (int i = 0; i < 11; ++i) {
+            printf("Output[%d]: %f\n", i, output_tensor->data.f[i]);
+        }
 
         // TRANSMIT RESULTS
         // TODO
