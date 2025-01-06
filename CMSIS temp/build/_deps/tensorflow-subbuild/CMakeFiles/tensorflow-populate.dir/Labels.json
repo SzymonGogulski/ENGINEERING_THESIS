@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/CMakeFiles/tensorflow-populate"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/CMakeFiles/tensorflow-populate.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/CMakeFiles/tensorflow-populate-complete.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-build.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-configure.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-download.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-install.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-patch.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-test.rule"
+		},
+		{
+			"file" : "/home/szymon-gogulski/Desktop/ENGINEERING_THESIS/CMSIS temp/build/_deps/tensorflow-subbuild/tensorflow-populate-prefix/src/tensorflow-populate-stamp/tensorflow-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"tensorflow-populate"
+		],
+		"name" : "tensorflow-populate"
+	}
+}

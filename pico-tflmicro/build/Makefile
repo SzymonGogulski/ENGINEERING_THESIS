@@ -220,6 +220,54 @@ CMSISDSP/fast:
 	$(MAKE) $(MAKESILENT) -f bin_dsp/CMakeFiles/CMSISDSP.dir/build.make bin_dsp/CMakeFiles/CMSISDSP.dir/build
 .PHONY : CMSISDSP/fast
 
+hello_world_float_model_data.o: hello_world_float_model_data.cpp.o
+.PHONY : hello_world_float_model_data.o
+
+# target to build an object file
+hello_world_float_model_data.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hello_world_float_model_data.cpp.o
+.PHONY : hello_world_float_model_data.cpp.o
+
+hello_world_float_model_data.i: hello_world_float_model_data.cpp.i
+.PHONY : hello_world_float_model_data.i
+
+# target to preprocess a source file
+hello_world_float_model_data.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hello_world_float_model_data.cpp.i
+.PHONY : hello_world_float_model_data.cpp.i
+
+hello_world_float_model_data.s: hello_world_float_model_data.cpp.s
+.PHONY : hello_world_float_model_data.s
+
+# target to generate assembly for a file
+hello_world_float_model_data.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hello_world_float_model_data.cpp.s
+.PHONY : hello_world_float_model_data.cpp.s
+
+hello_world_int8_model_data.o: hello_world_int8_model_data.cpp.o
+.PHONY : hello_world_int8_model_data.o
+
+# target to build an object file
+hello_world_int8_model_data.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hello_world_int8_model_data.cpp.o
+.PHONY : hello_world_int8_model_data.cpp.o
+
+hello_world_int8_model_data.i: hello_world_int8_model_data.cpp.i
+.PHONY : hello_world_int8_model_data.i
+
+# target to preprocess a source file
+hello_world_int8_model_data.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hello_world_int8_model_data.cpp.i
+.PHONY : hello_world_int8_model_data.cpp.i
+
+hello_world_int8_model_data.s: hello_world_int8_model_data.cpp.s
+.PHONY : hello_world_int8_model_data.s
+
+# target to generate assembly for a file
+hello_world_int8_model_data.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hello_world_int8_model_data.cpp.s
+.PHONY : hello_world_int8_model_data.cpp.s
+
 home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o: home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o
 .PHONY : home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o
 
@@ -9071,6 +9119,12 @@ help:
 	@echo "... bs2_default_library"
 	@echo "... main"
 	@echo "... pico-tflmicro-lib"
+	@echo "... hello_world_float_model_data.o"
+	@echo "... hello_world_float_model_data.i"
+	@echo "... hello_world_float_model_data.s"
+	@echo "... hello_world_int8_model_data.o"
+	@echo "... hello_world_int8_model_data.i"
+	@echo "... hello_world_int8_model_data.s"
 	@echo "... home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o"
 	@echo "... home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.i"
 	@echo "... home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.s"

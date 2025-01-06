@@ -72,6 +72,7 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/stdint.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_intsup.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/sys/_stdint.h \
+ /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/math.h \
  /home/szymon-gogulski/pico/pico-sdk/src/common/pico_stdlib_headers/include/pico/stdlib.h \
  /home/szymon-gogulski/pico/pico-sdk/src/common/pico_base_headers/include/pico.h \
  /home/szymon-gogulski/pico/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
@@ -134,6 +135,8 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/c_api_types.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/utility \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/stl_relops.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/hello_world_float_model_data.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/hello_world_int8_model_data.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/micro_interpreter.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/cstddef \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/flatbuffers.h \
@@ -295,12 +298,15 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/kernels/reduce.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/kernels/softmax.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/kernels/transpose_conv.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/micro_profiler.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/recording_micro_interpreter.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/recording_micro_allocator.h \
+ /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/arena_allocator/recording_single_arena_buffer_allocator.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/system_setup.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/arm_math.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/CMSIS-DSP/Source/../Include/arm_math_types.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/cmsis/CMSIS/Core/Include/cmsis_compiler.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/cmsis/CMSIS/Core/Include/cmsis_gcc.h \
- /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/math.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/limits.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/lib/gcc/arm-none-eabi/13.3.1/include/syslimits.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/limits.h \
