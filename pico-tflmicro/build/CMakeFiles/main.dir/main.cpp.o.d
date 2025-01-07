@@ -135,8 +135,6 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/c_api_types.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/utility \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/bits/stl_relops.h \
- /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/hello_world_float_model_data.h \
- /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/hello_world_int8_model_data.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/micro/micro_interpreter.h \
  /home/szymon-gogulski/.pico-sdk/toolchain/13_3_Rel1/arm-none-eabi/include/c++/13.3.1/cstddef \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/flatbuffers.h \

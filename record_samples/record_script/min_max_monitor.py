@@ -12,8 +12,8 @@ def monitor_serial_port(port, baudrate):
     try:
         # Open the serial port
         with serial.Serial(port, baudrate, timeout=1) as ser:
-            max_val = 2500
-            min_val = 2500
+            max_val = 2050
+            min_val = 2050
             
             print(f"Monitoring serial port {port} at baudrate {baudrate}...")
             

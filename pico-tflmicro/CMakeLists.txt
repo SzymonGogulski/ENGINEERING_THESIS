@@ -642,8 +642,6 @@ target_sources(main
   PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}/model.cpp
   ${CMAKE_CURRENT_LIST_DIR}/pre_def_mfcc.cpp
-  ${CMAKE_CURRENT_LIST_DIR}/hello_world_float_model_data.cpp
-  ${CMAKE_CURRENT_LIST_DIR}/hello_world_int8_model_data.cpp
   )
 
 # Link the library to the executable

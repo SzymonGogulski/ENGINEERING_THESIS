@@ -48,7 +48,7 @@ void setup_adc(){
 // BUFFER SETUP AND OPERATIONS
 #define FREQUENCY 16000
 #define SAMPLE_PERIOD_US 62
-#define SECONDS 5
+#define SECONDS 1
 #define BUFFER_SIZE (FREQUENCY * SECONDS) 
 uint16_t buffer[BUFFER_SIZE];
 

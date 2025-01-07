@@ -11,8 +11,6 @@
 
 #include "model.h"
 #include "tensorflow/lite/core/c/common.h"
-#include "hello_world_float_model_data.h"
-#include "hello_world_int8_model_data.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
@@ -65,18 +63,30 @@ void setup(){
     sleep_ms(1000);
 }
 
+// SIGNAL NORMALIZATION
+#define SIGNAL_MEAN 2080
+#define SIGNAL_RANGE 500
+#define SIGNAL_RANGE_INV 1.0f/SIGNAL_RANGE
+
+float32_t normalize(uint16_t raw){
+
+    float32_t normalized = (raw - SIGNAL_MEAN) * SIGNAL_RANGE_INV;
+    normalized = (normalized > 1.0) ? 1.0 : normalized;
+    normalized = (normalized < -1.0) ? -1.0 : normalized;
+    return normalized;
+}
 
 // BUFFER SETUP AND OPERATIONS
 #define FREQUENCY 16000
 #define SAMPLE_PERIOD_US 62
 #define SECONDS 1
 #define BUFFER_SIZE (FREQUENCY * SECONDS) 
-uint16_t buffer[BUFFER_SIZE];
+float32_t audio[BUFFER_SIZE];
 
-void record(uint16_t* ptr, int buffer_size){
+void record(float32_t* ptr, int buffer_size){
     
     for (int i=0; i<buffer_size; i++){
-        *(ptr+i) = adc_read();
+        *(ptr+i) = normalize(adc_read());
         sleep_us(SAMPLE_PERIOD_US);
     }
 }
@@ -108,7 +118,7 @@ TfLiteStatus RegisterOps(ModelOpResolver& op_resolver) {
 int main(){
 
     setup();
-    sleep_ms(10000);
+
     // SETUP CMSIS_DSP ---------------------------------------------------
     arm_mfcc_instance_f32 mfccInstance;
     mfccInstance.dctCoefs = dctCoefs;
@@ -138,30 +148,27 @@ int main(){
     // SETUP TENSORFLOW LITE MODEL ------------------------------------------------------------------------------------------------------------------
     const tflite::Model* model = ::tflite::GetModel(my_model);
     TFLITE_CHECK_EQ(model->version(), TFLITE_SCHEMA_VERSION);
-    printf("checkpoint 1\n");
+
     // Register operations
     ModelOpResolver op_resolver;
     TF_LITE_ENSURE_STATUS(RegisterOps(op_resolver));
-    printf("checkpoint 2\n");
+
     // Define tensor arena size and allocate memory
     constexpr int kTensorArenaSize = 64 * 1024; // Adjust size based on model requirements
     uint8_t tensor_arena[kTensorArenaSize];
 
-    printf("checkpoint 3\n");
     tflite::MicroInterpreter interpreter(model, op_resolver, tensor_arena, kTensorArenaSize);
     TF_LITE_ENSURE_STATUS(interpreter.AllocateTensors());
-    printf("ceckpoint 4\n");
+
     // Input and output tensors
     TfLiteTensor* input_tensor = interpreter.input(0);
     TfLiteTensor* output_tensor = interpreter.output(0);
-    printf("checkpoint 5\n");
+
     // Check input and output tensor sizes
     TFLITE_CHECK_EQ(input_tensor->dims->size, 2); // Ensure 2D input
     TFLITE_CHECK_EQ(input_tensor->dims->data[1], 793); // Ensure input size matches
     TFLITE_CHECK_EQ(output_tensor->dims->size, 2); // Ensure 2D output
     TFLITE_CHECK_EQ(output_tensor->dims->data[1], 11); // Ensure output size matches
-
-
     printf("Tensorflow setup complete \n");
 
     while(true){
@@ -174,9 +181,12 @@ int main(){
         printf("Starting workflow. \n");
 
         // RECORD SAMPLES
-        // TODO
+        gpio_put(Y_LED_PIN, 1);
+        record(audio, BUFFER_SIZE);
+        gpio_put(Y_LED_PIN, 0);
 
         //CALCULATE MFCCS
+        gpio_put(G_LED_PIN, 1);
         for (int i=0; i<window_num; i++){
 
             // Extract signal frame
@@ -202,12 +212,20 @@ int main(){
             // Run inference
         TF_LITE_ENSURE_STATUS(interpreter.Invoke());
 
-        // Retrieve and print the output values
-        printf("Model output:\n");
-        for (int i = 0; i < 11; ++i) {
-            printf("Output[%d]: %f\n", i, output_tensor->data.f[i]);
-        }
+        // // Retrieve and print the output values
+        printf("[Zero]:     %f\n", output_tensor->data.f[0]);
+        printf("[One]:      %f\n", output_tensor->data.f[1]);
+        printf("[Two]:      %f\n", output_tensor->data.f[3]);
+        printf("[Three]:    %f\n", output_tensor->data.f[4]);
+        printf("[Four]:     %f\n", output_tensor->data.f[5]);
+        printf("[Five]:     %f\n", output_tensor->data.f[6]);
+        printf("[Six]:      %f\n", output_tensor->data.f[7]);
+        printf("[Seven]:    %f\n", output_tensor->data.f[8]);
+        printf("[Eight]:    %f\n", output_tensor->data.f[9]);
+        printf("[Nine]:     %f\n", output_tensor->data.f[10]);
+        printf("[noise]:    %f\n", output_tensor->data.f[2]);
 
+        gpio_put(G_LED_PIN, 0);
         // TRANSMIT RESULTS
         // TODO
 

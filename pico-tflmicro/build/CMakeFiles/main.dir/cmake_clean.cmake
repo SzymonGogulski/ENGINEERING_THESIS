@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main.dir/hello_world_float_model_data.cpp.o"
-  "CMakeFiles/main.dir/hello_world_float_model_data.cpp.o.d"
-  "CMakeFiles/main.dir/hello_world_int8_model_data.cpp.o"
-  "CMakeFiles/main.dir/hello_world_int8_model_data.cpp.o.d"
   "CMakeFiles/main.dir/home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o"
   "CMakeFiles/main.dir/home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o.d"
   "CMakeFiles/main.dir/home/szymon-gogulski/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o"
