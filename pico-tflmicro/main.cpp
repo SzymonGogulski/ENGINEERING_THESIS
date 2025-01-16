@@ -212,18 +212,30 @@ int main(){
             // Run inference
         TF_LITE_ENSURE_STATUS(interpreter.Invoke());
 
+        // Print out the output with the highest amount.
+
+        int maxIndex = 0;
+        float maxValue = output_tensor->data.f[0];
+
+        for (int i = 1; i < size; i++) {
+            if (output_tensor->data.f[i] > maxValue) {
+                maxValue = output_tensor->data.f[i];
+                maxIndex = i;
+            }
+        }
+
         // // Retrieve and print the output values
-        printf("[Zero]:     %f\n", output_tensor->data.f[0]);
-        printf("[One]:      %f\n", output_tensor->data.f[1]);
-        printf("[Two]:      %f\n", output_tensor->data.f[3]);
-        printf("[Three]:    %f\n", output_tensor->data.f[4]);
-        printf("[Four]:     %f\n", output_tensor->data.f[5]);
-        printf("[Five]:     %f\n", output_tensor->data.f[6]);
-        printf("[Six]:      %f\n", output_tensor->data.f[7]);
-        printf("[Seven]:    %f\n", output_tensor->data.f[8]);
-        printf("[Eight]:    %f\n", output_tensor->data.f[9]);
-        printf("[Nine]:     %f\n", output_tensor->data.f[10]);
-        printf("[noise]:    %f\n", output_tensor->data.f[2]);
+        // printf("[Zero]:     %f\n", output_tensor->data.f[0]);
+        // printf("[One]:      %f\n", output_tensor->data.f[1]);
+        // printf("[Two]:      %f\n", output_tensor->data.f[3]);
+        // printf("[Three]:    %f\n", output_tensor->data.f[4]);
+        // printf("[Four]:     %f\n", output_tensor->data.f[5]);
+        // printf("[Five]:     %f\n", output_tensor->data.f[6]);
+        // printf("[Six]:      %f\n", output_tensor->data.f[7]);
+        // printf("[Seven]:    %f\n", output_tensor->data.f[8]);
+        // printf("[Eight]:    %f\n", output_tensor->data.f[9]);
+        // printf("[Nine]:     %f\n", output_tensor->data.f[10]);
+        // printf("[noise]:    %f\n", output_tensor->data.f[2]);
 
         gpio_put(G_LED_PIN, 0);
         // TRANSMIT RESULTS

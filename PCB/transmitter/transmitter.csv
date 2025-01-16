@@ -1,0 +1,12 @@
+Ref;Qnty;Value;Cmp name;Footprint;Description
+C1, C2;2;100n;C;Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm;Unpolarized capacitor
+J1, J2;2;Conn_01x20;Conn_01x20;Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical;Generic connector, single row, 01x20, script generated (kicad-library-utils/schlib/autogen/connector/)
+J3;1;Conn_01x05;Conn_01x05;Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical;Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)
+Q1, Q2, Q3, Q4;4;BC546;BC546;Package_TO_SOT_THT:TO-92_Inline;0.1A Ic, 65V Vce, Small Signal NPN Transistor, TO-92
+R1, R4;2;100R;R;Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal;Resistor
+R2, R3, R5, R7, R14;5;1k;R;Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal;Resistor
+R6;1;80R;R;Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal;Resistor
+R8;1;120R;R;Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal;Resistor
+R11, R12;2;4k7;R;Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal;Resistor
+R13;1;10k;R;Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal;Resistor
+S1, S2;2;1825967-1;1825967-1;1825967-1:SW_1825967-1;
