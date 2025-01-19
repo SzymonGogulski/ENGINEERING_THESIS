@@ -32,15 +32,15 @@ void setup(){
 static void send_manchester_bit(bool bit_val) {
     if (bit_val) {
         // bit=1 => HIGH → LOW
-        pwm_set_gpio_level(IR_PIN, DUTY);
-        sleep_us(HALF_BIT_US);
         pwm_set_gpio_level(IR_PIN, 0);
+        sleep_us(HALF_BIT_US);
+        pwm_set_gpio_level(IR_PIN, DUTY);
         sleep_us(HALF_BIT_US);
     } else {
         // bit=0 => LOW → HIGH
-        pwm_set_gpio_level(IR_PIN, 0);
-        sleep_us(HALF_BIT_US);
         pwm_set_gpio_level(IR_PIN, DUTY);
+        sleep_us(HALF_BIT_US);
+        pwm_set_gpio_level(IR_PIN, 0);
         sleep_us(HALF_BIT_US);
     }
 }
@@ -71,7 +71,9 @@ void transmit_RC5(unsigned int toggle, unsigned int addr, unsigned int command){
 
     total message durration 14(bits) x 2(halfbits) x 889us = 24892us ~ 24.9ms
     */
-
+   if (command < 64) {
+        command |= 0x40;  // Set the 7th bit (MSB) of the 6-bit command
+    }
     unsigned int data  = (3 << 12);     // Start bits = 11
     data |= ((toggle & 0x1) << 11);     // Toggle (1 bit)
     data |= ((addr   & 0x1F) << 6);     // Address (5 bits)
@@ -84,12 +86,14 @@ void transmit_RC5(unsigned int toggle, unsigned int addr, unsigned int command){
     pwm_set_gpio_level(IR_PIN, 0);
 }
 
+unsigned int counter = 0;
 
 int main() {
 
     setup();
-    bool toggle = true;
+
     while (true) {
+        //Wait for button press
         while (gpio_get(BUTTON_PIN)) {tight_loop_contents();}
 
         // Change duty of PWM
@@ -98,14 +102,23 @@ int main() {
         // sleep_ms(1000);
         // pwm_set_gpio_level(IR_PIN, 0);
     
-        // Transmit RC5
-        
         // uint64_t start=time_us_64();
-        transmit_RC5(0,0,1);
+        // Transmit RC5
         // uint64_t time_taken = time_us_64() - start;
-
         // printf("time taken: %llu \n", time_taken);
+
         // sleep_ms(400);
+        // for (int i=0; i<10; i++){
+        //     transmit_RC5(0,0,counter);
+        // }
+
+
+        sleep_ms(200);
+        for (int j=0; j<10; j++){
+            transmit_RC5(0,0,counter);
+        }
+        printf("%d\n", counter);
+        counter = counter + 1;
     }
 
     return 0;
