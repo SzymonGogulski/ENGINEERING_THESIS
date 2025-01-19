@@ -91,12 +91,19 @@ void record(float32_t* ptr, int buffer_size){
     }
 }
 
+void transmit_RC5(int id){
+    
+}
+
 // MFCC buffers
 static float32_t pSrc[fftLen];
 static float32_t pTmp [fftLen + 2];
 static float32_t pDst[nbDctOutputs];
 static float32_t mfccOutput[window_num*nbDctOutputs];
 
+// MODEL LABELS
+const char* labels[] = {"Zero", "One", "Noise", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+const int labels_int[] = {0, 1, 10, 2, 3, 4, 5, 6, 7, 8, 9};
 namespace {
 using ModelOpResolver = tflite::MicroMutableOpResolver<10>; // Adjust the number based on the operations your model uses
 
@@ -154,11 +161,12 @@ int main(){
     TF_LITE_ENSURE_STATUS(RegisterOps(op_resolver));
 
     // Define tensor arena size and allocate memory
-    constexpr int kTensorArenaSize = 64 * 1024; // Adjust size based on model requirements
+    int kTensorArenaSize = 64 * 1024; // Adjust size based on model requirements
     uint8_t tensor_arena[kTensorArenaSize];
 
     tflite::MicroInterpreter interpreter(model, op_resolver, tensor_arena, kTensorArenaSize);
     TF_LITE_ENSURE_STATUS(interpreter.AllocateTensors());
+    printf("Tensor arena used: %d bytes\n", interpreter.arena_used_bytes());
 
     // Input and output tensors
     TfLiteTensor* input_tensor = interpreter.input(0);
@@ -209,26 +217,33 @@ int main(){
             input_tensor->data.f[i] = mfccOutput[i];
         }
 
-            // Run inference
+        // Run inference
         TF_LITE_ENSURE_STATUS(interpreter.Invoke());
 
-        // // Retrieve and print the output values
-        printf("[Zero]:     %f\n", output_tensor->data.f[0]);
-        printf("[One]:      %f\n", output_tensor->data.f[1]);
-        printf("[Two]:      %f\n", output_tensor->data.f[3]);
-        printf("[Three]:    %f\n", output_tensor->data.f[4]);
-        printf("[Four]:     %f\n", output_tensor->data.f[5]);
-        printf("[Five]:     %f\n", output_tensor->data.f[6]);
-        printf("[Six]:      %f\n", output_tensor->data.f[7]);
-        printf("[Seven]:    %f\n", output_tensor->data.f[8]);
-        printf("[Eight]:    %f\n", output_tensor->data.f[9]);
-        printf("[Nine]:     %f\n", output_tensor->data.f[10]);
-        printf("[noise]:    %f\n", output_tensor->data.f[2]);
+        int max_index = 0;
+        float max_prob = output_tensor->data.f[0];
+        for (int i = 1; i < 11; ++i) {
+            if (output_tensor->data.f[i] > max_prob) {
+                max_prob = output_tensor->data.f[i];
+                max_index = i;
+            }
+        }
+
+        // Print the label with the highest probability
+        if (max_prob > 0.7){
+            printf("Predicted label: %s (Probability: %f)\n", labels[max_index], max_prob);
+            
+            if (labels_int[max_index] != 10){
+                transmit_RC5(labels_int[max_index]);
+            }
+            
+        }else{
+            printf("Predicted label: NONE (Probability: < 0.8)\n");
+        }
+        printf("\n");
+
 
         gpio_put(G_LED_PIN, 0);
-        // TRANSMIT RESULTS
-        // TODO
-
     }
 
     return 0;
