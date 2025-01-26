@@ -1,7 +1,0 @@
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/CMakeFiles/blinkcpp.dir
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/CMakeFiles/ZERO_CHECK.dir
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/pico-sdk/CMakeFiles/ALL_BUILD.dir
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default.dir
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_bin.dir
-C:/Users/szymo/Desktop/ASR/blinkcpp/build/pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir
