@@ -649,6 +649,7 @@ target_link_libraries(main
 pico-tflmicro-lib
 CMSISDSP
 pico_stdlib
+hardware_pwm 
 hardware_adc 
 hardware_dma 
 hardware_irq)

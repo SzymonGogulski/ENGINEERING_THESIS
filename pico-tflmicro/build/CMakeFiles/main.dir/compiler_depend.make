@@ -4037,6 +4037,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
@@ -4049,6 +4050,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/m0plus.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/nvic.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pads_bank0.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pwm.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
@@ -4062,6 +4064,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERING_THESIS
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_pwm/include/hardware/pwm.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
   /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
@@ -4153,6 +4156,10 @@ CMakeFiles/main.dir/pre_def_mfcc.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERIN
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.cpp:
 
+/home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pwm.h:
+
+/home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h:
+
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/util.h:
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/third_party/flatbuffers/include/flatbuffers/table.h:
@@ -4210,6 +4217,8 @@ CMakeFiles/main.dir/pre_def_mfcc.cpp.o: /home/szymon-gogulski/Desktop/ENGINEERIN
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/kernels/internal/reference/integer_ops/pooling.h:
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/kernels/internal/compatibility.h:
+
+/home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_pwm/include/hardware/pwm.h:
 
 /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/macros.h:
 

@@ -8,6 +8,7 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 #include "hardware/irq.h"
+#include "hardware/pwm.h"
 
 #include "model.h"
 #include "tensorflow/lite/core/c/common.h"
@@ -25,24 +26,35 @@
 #include "pre_def_mfcc.cpp"
 
 // GPIO PINS
-#define G_LED_PIN 0
-#define Y_LED_PIN 1
-#define R_LED_PIN 2
-#define BUTTON_PIN 14
+#define IR_PIN 0
+#define G_LED_PIN 1
+#define Y_LED_PIN 2
+#define R_LED_PIN 3
+#define BUTTON_PIN 16
 // ADC SETUP
 #define ADC_PIN 26
 #define ADC_NUM 0
+// PWM SETUP
+#define WRAP 3472
+#define DUTY (uint32_t)(WRAP * 0.25)
+#define HALF_BIT_US 889
 
-// SETUP STDIO, GPIO, ADC
+// SETUP STDIO, GPIO, ADC, PWM
 void setup(){
 
     stdio_init_all();
 
-    // Initialize LED
+    // Configure GPIO 0 as a PWM output
+    gpio_set_function(IR_PIN, GPIO_FUNC_PWM);
+    uint slice_num = pwm_gpio_to_slice_num(IR_PIN);
+    pwm_set_enabled(slice_num, true);
+    pwm_set_wrap(slice_num, WRAP);
+    pwm_set_gpio_level(IR_PIN, 0);
+    
     gpio_init(G_LED_PIN);
     gpio_set_dir(G_LED_PIN, GPIO_OUT);
     gpio_put(G_LED_PIN, 0);
-
+    
     gpio_init(Y_LED_PIN);
     gpio_set_dir(Y_LED_PIN, GPIO_OUT);
     gpio_put(Y_LED_PIN, 0);
@@ -91,8 +103,62 @@ void record(float32_t* ptr, int buffer_size){
     }
 }
 
-void transmit_RC5(int id){
-    
+
+static void send_manchester_bit(bool bit_val) {
+    if (bit_val) {
+        // bit=1 => HIGH → LOW
+        pwm_set_gpio_level(IR_PIN, 0);
+        sleep_us(HALF_BIT_US);
+        pwm_set_gpio_level(IR_PIN, DUTY);
+        sleep_us(HALF_BIT_US);
+    } else {
+        // bit=0 => LOW → HIGH
+        pwm_set_gpio_level(IR_PIN, DUTY);
+        sleep_us(HALF_BIT_US);
+        pwm_set_gpio_level(IR_PIN, 0);
+        sleep_us(HALF_BIT_US);
+    }
+}
+
+void transmit_RC5(unsigned int toggle, unsigned int addr, unsigned int command){
+    /*
+    Accepts values:
+        toggle: 0 or 1 (1 bit)
+        addr: from 0 to 31 (5 bits)
+        command: from 0 to 63 (6 bits)
+
+    RC5 frame consists of 14 bits in total:
+    START(2 bits) TOGGLE(1 bit) ADDRESS (5 bits) COMMAND (6 bits).
+
+    start is constant 0b11.
+
+    bits are encoded with the Manchester encoding.
+    This encoding divides bits to half bits with HALF_BIT_PERIOD = 889us.
+    Depending on the implementation:
+
+    Manchester (as per G. E. Thomas):
+    bit 1 -> halfbits: 10 (HIGH to LOW)
+    bit 0 -> halfbits: 01 (LOW to HIGH)
+
+    Manchester (as per IEEE 802.3):
+    bit 1 -> halfbits: 01 (LOW to HIGH)
+    bit 0 -> halfbits: 10 (HIGH to LOW)
+
+    total message durration 14(bits) x 2(halfbits) x 889us = 24892us ~ 24.9ms
+    */
+   if (command < 64) {
+        command |= 0x40;  // Set the 7th bit (MSB) of the 6-bit command
+    }
+    unsigned int data  = (3 << 12);     // Start bits = 11
+    data |= ((toggle & 0x1) << 11);     // Toggle (1 bit)
+    data |= ((addr   & 0x1F) << 6);     // Address (5 bits)
+    data |=  (command & 0x3F);          // Command (6 bits)
+
+    for(int bit_index = 13; bit_index >= 0; bit_index--) {
+        bool bit_val = (data & (1 << bit_index)) != 0;
+        send_manchester_bit(bit_val);
+    }
+    pwm_set_gpio_level(IR_PIN, 0);
 }
 
 // MFCC buffers
@@ -230,20 +296,19 @@ int main(){
         }
 
         // Print the label with the highest probability
-        if (max_prob > 0.7){
-            printf("Predicted label: %s (Probability: %f)\n", labels[max_index], max_prob);
-            
-            if (labels_int[max_index] != 10){
-                transmit_RC5(labels_int[max_index]);
+
+        printf("Predicted label: %s (Probability: %f)\n", labels[max_index], max_prob);
+        
+        if (labels_int[max_index] != 10){
+            sleep_ms(200);
+            for (int j=0; j<10; j++){
+                transmit_RC5(0,0,labels_int[max_index]);
             }
-            
-        }else{
-            printf("Predicted label: NONE (Probability: < 0.8)\n");
         }
+        
         printf("\n");
-
-
         gpio_put(G_LED_PIN, 0);
+
     }
 
     return 0;

@@ -78,7 +78,7 @@ int main() {
         gpio_put(R_LED_PIN, 1);
         while (gpio_get(BUTTON_PIN)) {
             tight_loop_contents();}
-        sleep_ms(100);
+        sleep_ms(300);
         gpio_put(R_LED_PIN, 0);
         
         // RECORD SAMPLES

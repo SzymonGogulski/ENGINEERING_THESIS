@@ -130,6 +130,9 @@ CMakeFiles/main.dir/main.cpp.o: \
  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
  /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma_debug.h \
+ /home/szymon-gogulski/pico/pico-sdk/src/rp2_common/hardware_pwm/include/hardware/pwm.h \
+ /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pwm.h \
+ /home/szymon-gogulski/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/model.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/common.h \
  /home/szymon-gogulski/Desktop/ENGINEERING_THESIS/pico-tflmicro/src/tensorflow/lite/core/c/c_api_types.h \
