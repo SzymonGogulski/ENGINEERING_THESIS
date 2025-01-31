@@ -10,7 +10,6 @@ def monitor_serial_port(port, baudrate):
         baudrate (int): Baud rate for the serial communication.
     """
     try:
-        # Open the serial port
         with serial.Serial(port, baudrate, timeout=1) as ser:
             max_val = 2050
             min_val = 2050
@@ -23,10 +22,8 @@ def monitor_serial_port(port, baudrate):
                 
                 if line:
                     try:
-                        # Convert the line to a float value
                         sample = float(line)
-                        
-                        # Update max and min values
+
                         if sample > max_val:
                             max_val = sample
                             print(f"New max value: {max_val} , {min_val}")
@@ -36,12 +33,9 @@ def monitor_serial_port(port, baudrate):
                             print(f"New min value: {max_val} , {min_val}")
                     
                     except ValueError:
-                        # Handle non-numeric data gracefully
                         print(f"Received non-numeric data: {line}")
                         
     except serial.SerialException as e:
         print(f"Serial port error: {e}")
 
-# Example usage
-# Replace 'COM3' with the appropriate port for your system
 monitor_serial_port('/dev/ttyACM0', 115200)
