@@ -4,6 +4,11 @@
 
 Praca inżynierska przedstawia realizację systemu rozpoznawania poleceń głosowych na platformie Raspberry Pi Pico z wykorzystanie modelu sieci neuronowej wyszkolonej w TensorFlow.
 
+### Główne cele projeku:
+1. Projekt płytki PCB,
+2. Wyszkolenie sieci neuronowej,
+3. Rozwój oprogramowania pod platformę RPI Pico.
+
 ### Nagranie z prezentacją systemu:
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1LP6ZR22HI8/0.jpg)](https://www.youtube.com/watch?v=1LP6ZR22HI8)
 
@@ -19,6 +24,11 @@ Na podstawie testów systemu można stwierdzić, że dokładność systemu jest 
 ### Szymon Gogulski 147403
 
 This engineering thesis presents the implementation of a voice command recognition system on the Raspberry Pi Pico platform using a neural network model trained in TensorFlow.
+
+### Main project goals:
+1. PCB design,
+2. Neural network training,
+3. Software development for the RPI Pico platform.
 
 ### Recording with presentation of the system:
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1LP6ZR22HI8/0.jpg)](https://www.youtube.com/watch?v=1LP6ZR22HI8)
